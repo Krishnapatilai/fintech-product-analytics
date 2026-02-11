@@ -1,0 +1,40 @@
+-- 1. Feature Adoption Rate
+SELECT 
+  ROUND(
+    COUNT(DISTINCT user_id) * 100.0 / (SELECT COUNT(*) FROM users),
+    2
+  ) AS adoption_percentage
+FROM feature_usage;
+
+--------------------------------------------------
+
+-- 2. Engagement: Transactions per User
+SELECT 
+  user_id,
+  COUNT(transaction_id) AS transaction_count
+FROM transactions
+GROUP BY user_id
+ORDER BY transaction_count DESC;
+
+--------------------------------------------------
+
+-- 3. Retention: Users with Repeat Transactions
+SELECT 
+  COUNT(*) AS retained_users
+FROM (
+  SELECT user_id
+  FROM transactions
+  GROUP BY user_id
+  HAVING COUNT(transaction_id) > 1
+);
+
+--------------------------------------------------
+
+-- 4. Segment-wise Feature Adoption
+SELECT 
+  u.business_type,
+  COUNT(DISTINCT f.user_id) AS feature_users
+FROM users u
+LEFT JOIN feature_usage f
+ON u.user_id = f.user_id
+GROUP BY u.business_type;

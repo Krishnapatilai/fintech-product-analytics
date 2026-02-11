@@ -1,0 +1,12 @@
+## Key Insights
+
+- Auto-Reconciliation adoption rate is ~70% among active users.
+- Users who adopted the feature show higher repeat transaction behavior.
+- Medium and Large businesses adopt the feature faster than Small businesses.
+- Drop-off observed after first successful use, indicating onboarding friction.
+
+## Recommendations
+
+- Improve onboarding with guided walkthroughs.
+- Target Small businesses with educational content.
+- Prioritize feature enhancements for high-usage segments.
